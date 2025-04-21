@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><!DOCTYPE html>
+    <html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Alasan Bersyukur - Untuk Tiara</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f9f0ff;
+                text-align: center;
+                padding: 50px;
+                color: #333;
+            }
+            h1 {
+                color: #9966cc;
+            }
+            .reason {
+                background-color: white;
+                border-radius: 15px;
+                padding: 15px;
+                margin: 15px auto;
+                max-width: 500px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+            .nav-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 30px;
+            }
+            button {
+                background-color: #9966cc;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 20px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            button:hover {
+                background-color: #7d4baf;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Alasan Aku Bersyukur Memilikimu</h1>
+        
+        <div class="reason">
+            <h3>1. Kamu Selalu Ada</h3>
+            <p>Terima kasih karena selalu ada untukku, baik dalam suka maupun duka.</p>
+        </div>
+        
+        <div class="reason">
+            <h3>2. Kamu Membuatku Bahagia</h3>
+            <p>Setiap kali melihat senyumanmu, dunia terasa lebih cerah.</p>
+        </div>
+        
+        <div class="reason">
+            <h3>3. Kamu Mengertiku</h3>
+            <p>Aku bersyukur memiliki seseorang yang benar-benar memahami diriku.</p>
+        </div>
+        
+        <div class="reason">
+            <h3>4. Kamu Istimewa</h3>
+            <p>Tiara, kamu adalah wanita paling istimewa yang pernah aku temui.</p>
+        </div>
+        
+        <div class="nav-buttons">
+            <button onclick="location.href='kenangan.html'">Kembali</button>
+            <button onclick="location.href='pesan.html'">Lanjut</button>
+            <audio id="bgMusic" autoplay loop>
+                <source src="audio1.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+            
+            <script>
+                // Simpan status musik di localStorage
+                document.addEventListener('DOMContentLoaded', function() {
+                    const audio = document.getElementById('bgMusic');
+                    
+                    // Cek apakah musik sedang diputar di halaman sebelumnya
+                    const isPlaying = localStorage.getItem('musicPlaying') === 'true';
+                    const currentTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+                    
+                    if (isPlaying) {
+                        audio.currentTime = currentTime;
+                        audio.play().catch(e => console.log("Autoplay prevented:", e));
+                    }
+                    
+                    // Simpan status saat berpindah halaman
+                    window.addEventListener('beforeunload', function() {
+                        localStorage.setItem('musicPlaying', !audio.paused);
+                        localStorage.setItem('musicTime', audio.currentTime);
+                    });
+                });
+            </script>
+    </body>
+    </html>
+
+    
+</body>
+</html>

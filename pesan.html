@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan Untukmu - Tiara</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e6f9ff;
+            text-align: center;
+            padding: 50px;
+            color: #333;
+        }
+        h1 {
+            color: #3399ff;
+        }
+        .message {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            line-height: 1.6;
+        }
+        .signature {
+            font-style: italic;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        button {
+            background-color: #3399ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0077cc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pesan Terakhir Untukmu</h1>
+    
+    <div class="message">
+        <p>Tiara Nur Aini,</p>
+        <p>Aku ingin mengucapkan terima kasih yang sebesar-besarnya karena sudah menjadi bagian dari hidupku. Sejak 28  Desember lalu, hidupku menjadi jauh lebih berwarna karena kehadiranmu.</p>
+        <p>Kamu adalah wanita yang kuat, cantik, dan penuh kasih sayang. Aku bersyukur setiap hari bisa memanggilmu sebagai kekasihku.</p>
+        <p>Aku mungkin tidak sempurna, tapi aku berjanji akan selalu berusaha menjadi yang terbaik untukmu. Mari kita lanjutkan perjalanan indah ini bersama-sama.</p>
+        <p>Terima kasih untuk semua tawa, pelukan, dan momen-momen berharga yang sudah kita lewati bersama.</p>
+        
+        <div class="signature">
+            <p>Dengan semua cintaku,</p>
+            <p><strong>Ndaru Bagus</strong></p>
+        </div>
+    </div>
+    
+    <div class="nav-buttons">
+        <button onclick="location.href='alasan.html'">Kembali</button>
+        <button onclick="location.href='index.html'">Ke Halaman Awal</button>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="audio1.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <button id="musicToggle" style="background: #ff6699; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 20px; cursor: pointer;">
+            ♫
+        </button>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('bgMusic');
+            const toggleBtn = document.getElementById('musicToggle');
+            
+            // Cek status sebelumnya
+            const isPlaying = localStorage.getItem('musicPlaying') === 'true';
+            const currentTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+            
+            audio.currentTime = currentTime;
+            if (isPlaying) {
+                audio.play().catch(e => console.log("Autoplay prevented:", e));
+                toggleBtn.textContent = '■';
+            } else {
+                toggleBtn.textContent = '♫';
+            }
+            
+            // Tombol kontrol
+            toggleBtn.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play();
+                    toggleBtn.textContent = '■';
+                } else {
+                    audio.pause();
+                    toggleBtn.textContent = '♫';
+                }
+                localStorage.setItem('musicPlaying', !audio.paused);
+            });
+            
+            // Simpan waktu saat berpindah halaman
+            window.addEventListener('beforeunload', function() {
+                localStorage.setItem('musicPlaying', !audio.paused);
+                localStorage.setItem('musicTime', audio.currentTime);
+            });
+        });
+        
+    </script>
+
+</body>
+</html>
+</body>
+</html>
